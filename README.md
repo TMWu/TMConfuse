@@ -1,8 +1,8 @@
 # TMConfuse
 
 首先声明，此文章是综合了几位大神的精髓，再结合自身需求作的修改完善！
-[原作者链接](https://github.com/LennonChin/Code-Confuse-Plugin)
-[基本原理](https://blog.csdn.net/yiyaaixuexi/article/details/29201699)
+\n[原作者链接](https://github.com/LennonChin/Code-Confuse-Plugin)
+\n[基本原理](https://blog.csdn.net/yiyaaixuexi/article/details/29201699)
 
 使用之前，需要先了解[class-dump](https://cnbin.github.io/blog/2015/05/21/objective-c-class-dump-an-zhuang-he-shi-yong-fang-fa/)的使用和安装，在此就不作过多介绍了。
 
@@ -16,8 +16,9 @@
 4. 增加property关键词、懒加载方法名过滤，减少生成的无用关键词。
 5. 增加IBAction方法的关键词二次过滤（原脚本存在自定义方法名跟IBAction方法重名，无法排队的情况）。
 
+## 以下内容大部分来源于[原作者](https://github.com/LennonChin/Code-Confuse-Plugin)
+------------------------------------------------分割线------------------------------------------------
 
-以下内容大部分来源于[原作者](https://github.com/LennonChin/Code-Confuse-Plugin)
 ## 实现原理
 
 其实插件的实现方式十分简单，提取用户编写的文件中的方法名，使用宏定义将其更换为任意的无规则字符串。但这种方式有一些需要注意的点：
