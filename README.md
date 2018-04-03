@@ -1,23 +1,23 @@
 # TMConfuse
 
-首先声明，此文章综合了几个大神的文章，再结合自身需求作的修改完善！
+首先声明，此文章是综合了几位大神的精髓，再结合自身需求作的修改完善！
 [原作者链接](https://github.com/LennonChin/Code-Confuse-Plugin)
 [基本原理](https://blog.csdn.net/yiyaaixuexi/article/details/29201699)
 
 使用之前，需要先了解[class-dump](https://cnbin.github.io/blog/2015/05/21/objective-c-class-dump-an-zhuang-he-shi-yong-fang-fa/)的使用和安装，在此就不作过多介绍了。
 
 由于iOS系统的封闭性，相对于安卓来说，iOS开发过程中的代码混淆重要性可能就并不是那么高了。但是在安全性(可通过`class-dump`反编译暴露出类的方法名列表)和特殊需求(比如马甲包的混淆过审)上还是有一定需求的！
-该脚本基本上借鉴于[原作者](https://github.com/LennonChin/Code-Confuse-Plugin)。在使用原作者脚本的过程中，发现了一些BUG和不足，比如正则的判断不准确，生成过多无用的宏，导致需要大量人力时间去排错...
+该脚本基本上借鉴于[原作者](https://github.com/LennonChin/Code-Confuse-Plugin)。在使用原作者脚本的过程中，发现了一些BUG和不足，比如正则的判断不准确，生成过多无用的宏，导致需要花费过多时间去排错...
 由于本人对python并不是很熟，所以只是在原作者的基础上作了一些完善修改。
 大概优化内容：
-1、修改正则表达式，能更精准地找出关键词。
-2、替换规则由原来生成的随机字符串，优化成随机生成2个单词拼接，防止审核过程中被误认为加入混淆乱码。
-3、增加-k选项，读取ignoreKey.txt(可自定义名称)需要忽略的关键词。
-4、增加property关键词、懒加载方法名过滤，减少生成的无用关键词。
-5、增加IBAction方法的关键词二次过滤（原脚本存在自定义方法名跟IBAction方法重名，无法排队的情况）。
+1. 修改正则表达式，能更精准地找出关键词。
+2. 替换规则由原来生成的随机字符串，优化成随机生成2个单词拼接，防止审核过程中被误认为加入混淆乱码。
+3. 增加-k选项，读取ignoreKey.txt(可自定义名称)需要忽略的关键词。
+4. 增加property关键词、懒加载方法名过滤，减少生成的无用关键词。
+5. 增加IBAction方法的关键词二次过滤（原脚本存在自定义方法名跟IBAction方法重名，无法排队的情况）。
 
 
-以下内容来源于[原作者](https://github.com/LennonChin/Code-Confuse-Plugin)，增加内容我都用(增加内容)标注
+以下内容大部分来源于[原作者](https://github.com/LennonChin/Code-Confuse-Plugin)
 ## 实现原理
 
 其实插件的实现方式十分简单，提取用户编写的文件中的方法名，使用宏定义将其更换为任意的无规则字符串。但这种方式有一些需要注意的点：
@@ -58,7 +58,7 @@ python3 Confuse.py \
 -s 当前项目编译环境的SDK库头文件目录，可以是多个目录，以`,`分隔 \
 -e 你不需要混淆的代码的目录，Swift代码目录，可以是多个目录，以`,`分隔 \
 -c 你需要提取关键字做排除混淆的目录，可以是多个目录，以`,`分隔 \
--k\t可选，用于存放需要过滤的key(增加内容)
+-k 可选，用于存放需要过滤的key(增加内容)
 -o 输出文件目录
 ```
 
@@ -68,6 +68,7 @@ python3 Confuse.py \
 - `-s`（system_dirs）：可选，配置系统Framework文件的目录，一般用于做排除字典，避免替换系统关键字
 - `-e`（exclusive_dirs）：可选，用于存放不扫描处理的文件的目录，比如Swift文件目录
 - `-c`（clean_dirs）：可选，用于存放排除关键字的文件的目录，例如Pods下的目录，或者静态库（头文件修改后会出错）
+- `-k`（ignore_key_dir）：可选，用于存放需要过滤的key(增加内容)
 - `-o`（output_dir）：必须，输出文件的目录，用于输出关键字、日志以及最后生成的混淆头文件的目录
 
 例如我的Demo中运行脚本如下：
@@ -89,13 +90,14 @@ python3 Confuse.py \
 5. 运行后会在你指定的输出目录下产生一份Confuse.h文件，内容一般如下：
 
 ```c
-#define NEED_CONFUSE 1
-#if NEED_CONFUSE
-// create time at 2018-03-07 11:08:29.482661
-#define thisIsATestFunctionWithoutParameters EHIFIFFCDEDBDAEHAHJECHHDJABBEFIE
-#define thisIsATestFunctionWithParameter1 FGCCAACHEFDEDEABBEDHDAACEEEFFDDB
-#define thisIsAPublicFunctionWithParameter1 BCCAFCBBAAACDACBJAJJGEJHDCAHIFAJ
-#define thisIsAPublicFunctionWithoutParameters FBIBCDBBEDJADFIBBBFJIJACCFJIAACE
+#ifndef NEED_CONFUSE_h
+#define NEED_CONFUSE_h
+// 生成时间： 2018-04-03 17:20:51
+#define Function1 linotypistStonecrop
+#define function1 exactingnessMimologist
+#define function2 sheepmanSupersublimated
+#define functionWithTitle kensititeCratinean
+#define subTitle icelandicUntell
 #endif
 ```
 
