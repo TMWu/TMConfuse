@@ -1,0 +1,13 @@
+--- !tapi-tbd-v2
+archs:           [ i386, x86_64 ]
+uuids:           [ 'i386: 61B4D386-5ED2-3BE3-AFD4-6DEB580A5619', 'x86_64: 119272A0-8302-3933-A6D3-8B743F346977' ]
+platform:        ios
+install-name:    /System/Library/Frameworks/UserNotificationsUI.framework/UserNotificationsUI
+objc-constraint: none
+exports:         
+  - archs:           [ i386, x86_64 ]
+    symbols:         [ _UNAppLaunchOriginContentExtension, _UserNotificationsUIVersionNumber, 
+                       _UserNotificationsUIVersionString ]
+    objc-classes:    [ __UNNotificationContentExtensionContext, __UNNotificationExtensionHostViewController, 
+                       __UNNotificationExtensionRemoteViewController ]
+...

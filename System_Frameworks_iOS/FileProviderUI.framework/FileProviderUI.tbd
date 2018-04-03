@@ -1,0 +1,17 @@
+--- !tapi-tbd-v2
+archs:           [ i386, x86_64 ]
+uuids:           [ 'i386: 00000000-0000-0000-0000-000000000000', 'x86_64: BCD10862-D3B4-3729-8DF9-DC723B4352ED' ]
+platform:        ios
+install-name:    /System/Library/Frameworks/FileProviderUI.framework/FileProviderUI
+current-version: 68.5.13
+objc-constraint: none
+exports:         
+  - archs:           [ i386, x86_64 ]
+    symbols:         [ _FPUIActionIdentifierAuthenticate, _FPUIActionViewControllerNavigationBarDoneButtonIdentifier, 
+                       _FPUIActionViewControllerNavigationBarIdentifier, _FPUIErrorDomain, 
+                       _FPUIPresentActionButtonIdentifier, _FPUInternalActionCancelButtonIdentifier, 
+                       _FPUInternalActionContentLabelIdentifier, _FPUInternalActionFailButtonIdentifier, 
+                       _FPUInternalActionSucceedButtonIdentifier, _FPUInternalActionTypeLabelIdentifier ]
+    objc-classes:    [ _FPUIAction, _FPUIActionExtensionContext, _FPUIActionExtensionViewController, 
+                       _FPUIActionViewController, _FPUIManager ]
+...

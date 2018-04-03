@@ -1,0 +1,22 @@
+--- !tapi-tbd-v2
+archs:           [ i386, x86_64 ]
+uuids:           [ 'i386: A4135715-C63F-3E6F-B1BE-22F9F6C3AAE2', 'x86_64: 9C3306FD-4EA3-37B2-A600-743F3AE291E2' ]
+platform:        ios
+install-name:    /System/Library/Frameworks/NotificationCenter.framework/NotificationCenter
+objc-constraint: none
+exports:         
+  - archs:           [ i386 ]
+    symbols:         [ _NCExtensionItemUserInfoInitialLargestAvailableDisplayModeKey ]
+    objc-classes:    [ _NCDataSourceManager, _NCWidgetDataSource, _NCWidgetDatum ]
+  - archs:           [ i386, x86_64 ]
+    symbols:         [ _NCAppLaunchOriginWidget, _NCExtensionItemUserInfoContainerIdentifierKey, 
+                       _NCExtensionItemUserInfoDefaultMarginsKey, _NCExtensionItemUserInfoInitialActiveDisplayModeKey, 
+                       _NCExtensionItemUserInfoInitialBoundsKey, _NCExtensionItemUserInfoInitialMaxCompactSizeKey, 
+                       _NCExtensionItemUserInfoInitialMaxExpandedSizeKey, _NCExtensionItemUserInfoInitialVisibilityStateKey, 
+                       _NCExtensionItemUserInfoSnapshotTimestampsEnabledKey, _NCExtensionItemUserInfoWidgetIdentifierKey, 
+                       _NCIsValidWidgetDisplayMode, _NCStringFromWidgetDisplayMode, 
+                       _NCStringFromWidgetVisibilityState, _NCWidgetControllerConnectionName, 
+                       _NCWidgetControllerHasContentEntitlement, _NCWidgetControllerRequestRefreshEntitlement, 
+                       _NCWidgetRowHeightDidChangeNotification, __NCWidgetDisplayModeUnset ]
+    objc-classes:    [ _NCWidgetController, _NCWidgetMetrics ]
+...

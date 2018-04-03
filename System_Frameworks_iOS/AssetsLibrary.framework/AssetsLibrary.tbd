@@ -1,0 +1,22 @@
+--- !tapi-tbd-v2
+archs:           [ i386, x86_64 ]
+uuids:           [ 'i386: C2E8F113-7D01-38C6-A141-E4E8AF1B0675', 'x86_64: EDD1F7E0-7C24-32A8-84F0-B100372B451F' ]
+platform:        ios
+install-name:    /System/Library/Frameworks/AssetsLibrary.framework/AssetsLibrary
+objc-constraint: none
+exports:         
+  - archs:           [ i386, x86_64 ]
+    symbols:         [ _ALAssetLibraryDeletedAssetGroupsKey, _ALAssetLibraryInsertedAssetGroupsKey, 
+                       _ALAssetLibraryUpdatedAssetGroupsKey, _ALAssetLibraryUpdatedAssetsKey, 
+                       _ALAssetPropertyAssetURL, _ALAssetPropertyDate, _ALAssetPropertyDuration, 
+                       _ALAssetPropertyEditorBundleID, _ALAssetPropertyExternalUsageIntent, 
+                       _ALAssetPropertyLocation, _ALAssetPropertyOrientation, _ALAssetPropertyRepresentations, 
+                       _ALAssetPropertyType, _ALAssetPropertyURLs, _ALAssetTypePhoto, 
+                       _ALAssetTypeUnknown, _ALAssetTypeVideo, _ALAssetsGroupPropertyName, 
+                       _ALAssetsGroupPropertyPersistentID, _ALAssetsGroupPropertyRepresentativeEndDate, 
+                       _ALAssetsGroupPropertyRepresentativeLocationNames, _ALAssetsGroupPropertyRepresentativeStartDate, 
+                       _ALAssetsGroupPropertyType, _ALAssetsGroupPropertyURL, _ALAssetsLibraryChangedNotification, 
+                       _ALAssetsLibraryErrorDomain, _ALErrorInvalidProperty ]
+    objc-classes:    [ _ALAsset, _ALAssetRepresentation, _ALAssetsFilter, _ALAssetsGroup, 
+                       _ALAssetsLibrary ]
+...

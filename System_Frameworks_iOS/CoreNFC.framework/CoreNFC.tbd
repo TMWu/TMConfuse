@@ -1,0 +1,13 @@
+--- !tapi-tbd-v2
+archs:           [ i386, x86_64 ]
+uuids:           [ 'i386: 00000000-0000-0000-0000-000000000000', 'x86_64: F5144E75-BE12-3BF1-BBC3-DAFF85A295DB' ]
+platform:        ios
+install-name:    /System/Library/Frameworks/CoreNFC.framework/CoreNFC
+objc-constraint: none
+exports:         
+  - archs:           [ i386, x86_64 ]
+    symbols:         [ _NFCErrorDomain, _NFCISO15693TagResponseErrorKey ]
+    objc-classes:    [ _NFCISO15693CustomCommandConfiguration, _NFCISO15693ReadMultipleBlocksConfiguration, 
+                       _NFCISO15693ReaderSession, _NFCNDEFMessage, _NFCNDEFPayload, 
+                       _NFCNDEFReaderSession, _NFCReaderSession, _NFCTagCommandConfiguration ]
+...

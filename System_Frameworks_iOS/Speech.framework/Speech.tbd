@@ -1,0 +1,15 @@
+--- !tapi-tbd-v2
+archs:           [ i386, x86_64 ]
+uuids:           [ 'i386: 8A74B56B-CF67-36E4-9D27-B6667B4458E9', 'x86_64: B029B148-FB40-3A47-ADAB-F7673A82B829' ]
+platform:        ios
+install-name:    /System/Library/Frameworks/Speech.framework/Speech
+objc-constraint: none
+exports:         
+  - archs:           [ i386 ]
+    objc-classes:    [ _SFSpeechRecordingRecognitionRequest ]
+  - archs:           [ i386, x86_64 ]
+    objc-classes:    [ _SFSpeechAudioBufferRecognitionRequest, _SFSpeechRecognitionRequest, 
+                       _SFSpeechRecognitionResult, _SFSpeechRecognitionTask, _SFSpeechRecognizer, 
+                       _SFSpeechURLRecognitionRequest, _SFTranscription, _SFTranscriptionSegment, 
+                       __SFSearchRequest, __SFSearchResult ]
+...

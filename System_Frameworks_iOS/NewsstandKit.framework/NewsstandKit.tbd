@@ -1,0 +1,11 @@
+--- !tapi-tbd-v2
+archs:           [ i386, x86_64 ]
+uuids:           [ 'i386: 9975E71C-5EDD-3B18-A4D5-C7C075B0B929', 'x86_64: CD3C802B-A460-353E-A076-411E91BCED3F' ]
+platform:        ios
+install-name:    /System/Library/Frameworks/NewsstandKit.framework/NewsstandKit
+objc-constraint: none
+exports:         
+  - archs:           [ i386, x86_64 ]
+    symbols:         [ _NKIssueDownloadCompletedNotification ]
+    objc-classes:    [ _NKAssetDownload, _NKIssue, _NKLibrary ]
+...

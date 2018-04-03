@@ -9,21 +9,45 @@
 #import "ViewController.h"
 
 @interface ViewController ()
-
+///懒加载property测试
+@property (nonatomic, strong) NSMutableArray *testArray;
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+
+}
+
+- (void)function1 {
+
+}
+
+- (void)Function1 {
+
+}
+
+- (NSString *)function2 {
+    return @"text";
+}
+
+- (void)ignoreTestFunction {
+
+}
+
+- (void)functionWithTitle:(NSString *)title subTitle:(NSString *)subTitle {
+
 }
 
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+#pragma mark - 懒加载
 
+- (NSMutableArray *)testArray {
+    if (!_testArray) {
+        _testArray = [NSMutableArray array];
+    }
+    return _testArray;
+}
 
 @end

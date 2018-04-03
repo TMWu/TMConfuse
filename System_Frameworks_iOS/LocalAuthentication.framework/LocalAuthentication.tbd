@@ -1,0 +1,24 @@
+--- !tapi-tbd-v2
+archs:           [ i386, x86_64 ]
+uuids:           [ 'i386: 01869FD1-C282-3807-AE19-2EBC43204D3A', 'x86_64: BE57C397-4441-303E-8111-EF7BA7637821' ]
+platform:        ios
+install-name:    /System/Library/Frameworks/LocalAuthentication.framework/LocalAuthentication
+current-version: 425.30.30
+objc-constraint: none
+exports:         
+  - archs:           [ i386, x86_64 ]
+    symbols:         [ _LAAvailableMechanisms, _LAContextCreate, _LAContextGetTypeID, 
+                       _LACopyACMContext, _LACopyCurrentContext, _LACopyExternalizedContext, 
+                       _LACopyResultOfPolicyEvaluation, _LACreateNewContextWithACMContext, 
+                       _LACreateNewContextWithACMContextInSession, _LAErrorDomain, 
+                       _LAErrorInfoBiometryType, _LAErrorInfoTCCServerPrompt, _LAErrorInfoTCCService, 
+                       _LAErrorSubcodeKey, _LAEvaluateACL, _LAEvaluateAndUpdateACL, 
+                       _LAEvaluatePolicy, _LAExecuteBlockWithContext, _LAFingerDatabaseHash, 
+                       _LAIsCredentialSet, _LAPasswordRetryTime, _LASetCredential, 
+                       _LATouchIDAuthenticationMaximumAllowableReuseDuration, _LAUpdateAccessControlAfterEvaluation, 
+                       _LocalAuthenticationVersionNumber, _LocalAuthenticationVersionString, 
+                       _cStringFromCFString, _coreauthd_create_message, _coreauthd_message_no_error, 
+                       _coreauthd_message_with_reply_sync, _coreauthd_send_sync_and_do, 
+                       _kLACurrentContextKey, _makeCFError, _makeCFErrorWithUserInfo ]
+    objc-classes:    [ _LAClient, _LAContext ]
+...

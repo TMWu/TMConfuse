@@ -13,6 +13,9 @@
 		8945E5F42073114F003C2F74 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8945E5F32073114F003C2F74 /* Assets.xcassets */; };
 		8945E5F72073114F003C2F74 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8945E5F52073114F003C2F74 /* LaunchScreen.storyboard */; };
 		8945E5FA2073114F003C2F74 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8945E5F92073114F003C2F74 /* main.m */; };
+		8945E60F20731666003C2F74 /* Confuse.py in Resources */ = {isa = PBXBuildFile; fileRef = 8945E60720731666003C2F74 /* Confuse.py */; };
+		8945E61120731666003C2F74 /* ignoreKey.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8945E60920731666003C2F74 /* ignoreKey.txt */; };
+		8945E61220731666003C2F74 /* start.sh in Resources */ = {isa = PBXBuildFile; fileRef = 8945E60A20731666003C2F74 /* start.sh */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +29,11 @@
 		8945E5F62073114F003C2F74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8945E5F82073114F003C2F74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8945E5F92073114F003C2F74 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		8945E60620731666003C2F74 /* Confuse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Confuse.h; sourceTree = "<group>"; };
+		8945E60720731666003C2F74 /* Confuse.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = Confuse.py; sourceTree = "<group>"; };
+		8945E60920731666003C2F74 /* ignoreKey.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ignoreKey.txt; sourceTree = "<group>"; };
+		8945E60A20731666003C2F74 /* start.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = start.sh; sourceTree = "<group>"; };
+		8945E6172073174E003C2F74 /* TMPrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TMPrefixHeader.pch; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +50,7 @@
 		8945E5DE2073114F003C2F74 = {
 			isa = PBXGroup;
 			children = (
+				8945E60420731666003C2F74 /* CodeConfuse */,
 				8945E5E92073114F003C2F74 /* TMConfuse */,
 				8945E5E82073114F003C2F74 /* Products */,
 			);
@@ -67,8 +76,20 @@
 				8945E5F52073114F003C2F74 /* LaunchScreen.storyboard */,
 				8945E5F82073114F003C2F74 /* Info.plist */,
 				8945E5F92073114F003C2F74 /* main.m */,
+				8945E6172073174E003C2F74 /* TMPrefixHeader.pch */,
 			);
 			path = TMConfuse;
+			sourceTree = "<group>";
+		};
+		8945E60420731666003C2F74 /* CodeConfuse */ = {
+			isa = PBXGroup;
+			children = (
+				8945E60620731666003C2F74 /* Confuse.h */,
+				8945E60720731666003C2F74 /* Confuse.py */,
+				8945E60920731666003C2F74 /* ignoreKey.txt */,
+				8945E60A20731666003C2F74 /* start.sh */,
+			);
+			path = CodeConfuse;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -132,6 +153,9 @@
 				8945E5F72073114F003C2F74 /* LaunchScreen.storyboard in Resources */,
 				8945E5F42073114F003C2F74 /* Assets.xcassets in Resources */,
 				8945E5F22073114F003C2F74 /* Main.storyboard in Resources */,
+				8945E60F20731666003C2F74 /* Confuse.py in Resources */,
+				8945E61120731666003C2F74 /* ignoreKey.txt in Resources */,
+				8945E61220731666003C2F74 /* start.sh in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,6 +303,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/TMConfuse/TMPrefixHeader.pch";
 				INFOPLIST_FILE = TMConfuse/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tim.demo.TMConfuse;
@@ -292,6 +317,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/TMConfuse/TMPrefixHeader.pch";
 				INFOPLIST_FILE = TMConfuse/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tim.demo.TMConfuse;

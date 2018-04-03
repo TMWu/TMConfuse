@@ -1,0 +1,12 @@
+--- !tapi-tbd-v2
+archs:           [ i386, x86_64 ]
+uuids:           [ 'i386: 271D424C-8FB3-3257-B673-2B8C464C1670', 'x86_64: C52D90E6-C56C-3BFD-9598-D42F6AD9C1CE' ]
+platform:        ios
+install-name:    /System/Library/Frameworks/PushKit.framework/PushKit
+objc-constraint: none
+exports:         
+  - archs:           [ i386, x86_64 ]
+    symbols:         [ _PKPushTypeComplication, _PKPushTypeFileProvider, _PKPushTypeVoIP, 
+                       _PushKitVersionNumber, _PushKitVersionString ]
+    objc-classes:    [ _PKPushCredentials, _PKPushPayload, _PKPushRegistry ]
+...
