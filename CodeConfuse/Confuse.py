@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
-#https://github.com/LennonChin/Code-Confuse-Plugin/blob/master/README_zh-cn.md
 #系统库路径/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/System/Library/Frameworks
 import os
 import re

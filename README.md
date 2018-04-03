@@ -107,5 +107,10 @@ python3 Confuse.py \
 
 引入该文件后，Command+B测试编译，如果无法避免而产生编译错误则需要手动调整；由于将所有的替换归集到了头文件中了，所以遇到有错误的地方尝试删除对应宏定义替换信息重新编辑即可。
 
+另外附上一个系统系统库路径：
+```
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/System/Library/Frameworks
+```
+
 
 
