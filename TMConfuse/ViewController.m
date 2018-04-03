@@ -36,6 +36,10 @@
 
 }
 
+- (void)ignoreFunction2:(NSString *)text {
+
+}
+
 - (void)functionWithTitle:(NSString *)title subTitle:(NSString *)subTitle {
 
 }

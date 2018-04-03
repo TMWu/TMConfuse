@@ -1,1 +1,2 @@
 ignoreTestFunction
+ignoreFunction2
