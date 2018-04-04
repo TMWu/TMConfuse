@@ -2,23 +2,24 @@
 
 首先声明，此文章是综合了几位大神的精髓，再结合自身需求作的修改完善！
 
-[原作者链接](https://github.com/LennonChin/Code-Confuse-Plugin)
+[原文kaich/codeobscure](https://github.com/LennonChin/Code-Confuse-Plugin)
 
-[基本原理](https://blog.csdn.net/yiyaaixuexi/article/details/29201699)
+[iOS安全攻防（二十三）：Objective-C代码混淆](https://blog.csdn.net/yiyaaixuexi/article/details/29201699)
 
 使用之前，需要先了解[class-dump](https://cnbin.github.io/blog/2015/05/21/objective-c-class-dump-an-zhuang-he-shi-yong-fang-fa/)的使用和安装，在此就不作过多介绍了。
 
-由于iOS系统的封闭性，相对于安卓来说，iOS开发过程中的代码混淆重要性可能就并不是那么高了。但是在安全性(可通过`class-dump`反编译暴露出类的方法名列表)和特殊需求(比如马甲包的混淆过审)上还是有一定需求的！
-该脚本基本上借鉴于[原作者](https://github.com/LennonChin/Code-Confuse-Plugin)。在使用原作者脚本的过程中，发现了一些BUG和不足，比如正则的判断不准确，生成过多无用的宏，导致需要花费过多时间去排错...
+由于iOS系统的封闭性，相对于安卓来说，iOS开发过程中代码混淆可能就显得并不是得非有不可了。但是在安全性(可通过[class-dump](https://cnbin.github.io/blog/2015/05/21/objective-c-class-dump-an-zhuang-he-shi-yong-fang-fa/)反编译暴露出类的方法名)和特殊需求上(例如马甲包的混淆过审)还是有一定需求的！
+此脚本借鉴于[kaich/codeobscure](https://github.com/LennonChin/Code-Confuse-Plugin)。在使用原作者脚本的过程中，发现了一些BUG和不足，比如正则表达式的判断不准确，生成过多无用的替换宏，需要花费过多时间去人工排错...
 由于本人对python并不是很熟，所以只是在原作者的基础上作了一些完善修改。
-大概优化内容：
-1. 修改正则表达式，能更精准地找出关键词。
-2. 替换规则由原来生成的随机字符串，优化成随机生成2个单词拼接，防止审核过程中被误认为加入混淆乱码。
-3. 增加-k选项，读取ignoreKey.txt(可自定义名称)需要忽略的关键词。
-4. 增加property关键词、懒加载方法名过滤，减少生成的无用关键词。
-5. 增加IBAction方法的关键词二次过滤（原脚本存在自定义方法名跟IBAction方法重名，无法排队的情况）。
+####优化内容：
+- 修改正则表达式，更精准地找出关键词。
+- 替换规则更改：随机字符串==>随机生成2个单词拼接。防止苹果审核过程被误认加入混淆乱码。
+- 增加-k选项，通过ignoreKey.txt文件添加需要过滤的关键词，可避免每次生成都要手动删除部分关键词的麻烦。
+- 增加property关键词、懒加载方法名过滤，减少无用宏的生成。
+- 增加IBAction方法关键词的二次过滤（原脚本存在自定义方法跟IBAction方法重名，无法排除的情况）。
 
------------------------------------以下内容大部分来源于[原作者](https://github.com/LennonChin/Code-Confuse-Plugin)-----------------------------------
+***
+###以下内容大部分来源于[kaich/codeobscure](https://github.com/LennonChin/Code-Confuse-Plugin)
 
 ## 实现原理
 
@@ -73,22 +74,6 @@ python3 Confuse.py \
 - `-k`（ignore_key_dir）：可选，用于存放需要过滤的key(增加内容)
 - `-o`（output_dir）：必须，输出文件的目录，用于输出关键字、日志以及最后生成的混淆头文件的目录
 
-例如我的Demo中运行脚本如下：
-
-```shell
-python3 Confuse.py \
--i /Users/LennonChin/Desktop/Code-Confuse-Plugin/Demo/Confuse_Demo/Confuse_Demo/ \
--s /Users/LennonChin/Desktop/Code-Confuse-Plugin/Demo/System_Frameworks_iOS11 \
--e /Users/LennonChin/Desktop/Code-Confuse-Plugin/Demo/Confuse_Demo/Confuse_Demo/Swift/ \
--c /Users/LennonChin/Desktop/Code-Confuse-Plugin/Demo/Confuse_Demo/Confuse_Demo/OtherSDK \
--k /Users/wuaming/Desktop/TMConfuse/CodeConfuse/ignoreKey.txt(增加内容) \
--o /Users/LennonChin/Desktop/Code-Confuse-Plugin/Demo/
-```
-
-然后回车运行即可。
-
-> 注：在本项目中有一份示例代码，可以参考。
-
 5. 运行后会在你指定的输出目录下产生一份Confuse.h文件，内容一般如下：
 
 ```c
@@ -108,9 +93,7 @@ python3 Confuse.py \
 引入该文件后，Command+B测试编译，如果无法避免而产生编译错误则需要手动调整；由于将所有的替换归集到了头文件中了，所以遇到有错误的地方尝试删除对应宏定义替换信息重新编辑即可。
 
 另外附上一个系统系统库路径：
-```
-/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/System/Library/Frameworks
-```
+>/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/System/Library/Frameworks
 
 
 
