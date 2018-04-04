@@ -2,7 +2,7 @@
 
 首先声明，此文章是综合了几位大神的精髓，再结合自身需求作的修改完善！
 
-[原文kaich/codeobscure](https://github.com/LennonChin/Code-Confuse-Plugin)
+[原文：kaich/codeobscure](https://github.com/LennonChin/Code-Confuse-Plugin)
 
 [iOS安全攻防（二十三）：Objective-C代码混淆](https://blog.csdn.net/yiyaaixuexi/article/details/29201699)
 
@@ -11,7 +11,7 @@
 由于iOS系统的封闭性，相对于安卓来说，iOS开发过程中代码混淆可能就显得并不是得非有不可了。但是在安全性(可通过[class-dump](https://cnbin.github.io/blog/2015/05/21/objective-c-class-dump-an-zhuang-he-shi-yong-fang-fa/)反编译暴露出类的方法名)和特殊需求上(例如马甲包的混淆过审)还是有一定需求的！
 此脚本借鉴于[kaich/codeobscure](https://github.com/LennonChin/Code-Confuse-Plugin)。在使用原作者脚本的过程中，发现了一些BUG和不足，比如正则表达式的判断不准确，生成过多无用的替换宏，需要花费过多时间去人工排错...
 由于本人对python并不是很熟，所以只是在原作者的基础上作了一些完善修改。
-####优化内容：
+#### 优化内容：
 - 修改正则表达式，更精准地找出关键词。
 - 替换规则更改：随机字符串==>随机生成2个单词拼接。防止苹果审核过程被误认加入混淆乱码。
 - 增加-k选项，通过ignoreKey.txt文件添加需要过滤的关键词，可避免每次生成都要手动删除部分关键词的麻烦。
@@ -19,7 +19,7 @@
 - 增加IBAction方法关键词的二次过滤（原脚本存在自定义方法跟IBAction方法重名，无法排除的情况）。
 
 ***
-###以下内容大部分来源于[kaich/codeobscure](https://github.com/LennonChin/Code-Confuse-Plugin)
+### 以下内容大部分来源于[kaich/codeobscure](https://github.com/LennonChin/Code-Confuse-Plugin)
 
 ## 实现原理
 
