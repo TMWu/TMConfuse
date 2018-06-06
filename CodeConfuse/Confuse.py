@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
+#https://github.com/LennonChin/Code-Confuse-Plugin/blob/master/README_zh-cn.md
 #系统库路径/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/System/Library/Frameworks
 import os
 import re
@@ -123,11 +124,18 @@ class ConfuseBiz(object):
     # 生成2个随机单词拼接成的字符串
     @staticmethod
     def confuse_text(text):
-        word_file = "/usr/share/dict/words"
-        WORDS = open(word_file).read().splitlines()
-        word = random.choice(WORDS).lower()
-        word += random.choice(WORDS).capitalize()
+        firstArray = ['send', 'check', 'upload', 'refresh', 'has','rest', 'change', 'add', 'remove', 'is']
+        secondArray = ['Item', 'UserInfo', 'MediaInfo', 'Route', 'Common', 'Chat', 'Commis']
+        thirdArray = ['By', 'Of', 'With', 'And', 'From', 'To', 'In']
+        forthArray = ['Home', 'DrawMap', 'MediaID', 'Message', 'Loaction', 'Username', 'My']
+        fifthArray = ['Info', 'Count', 'Name', 'SystemId', 'Title', 'Topic', 'Action']
+        word = random.choice(firstArray) + random.choice(secondArray) + random.choice(thirdArray) + random.choice(forthArray) + random.choice(fifthArray)
         return word
+#        word_file = "/usr/share/dict/words"
+#        WORDS = open(word_file).read().splitlines()
+#        word = random.choice(WORDS).lower()
+#        word += random.choice(WORDS).capitalize()
+
     # 生成唯一的字符串
 #        seeds = 'abcdefghijklmnopqrst'
 #        uid = str(uuid.uuid3(uuid.NAMESPACE_DNS, text))
@@ -572,8 +580,17 @@ if __name__ == '__main__':
 
     # 生成混淆文件
     confused_dict = {}
+    diff_dic = []
     for item in diff_identifiers:
-        confused_dict[item] = ConfuseBiz.confuse_text(item)
+        randomNum = random.randint(0,3)
+        if randomNum == 0:
+            confused_dict[item] = random.choice(['zndy_', 'tim_']) + item
+        else:
+            confused_word = ConfuseBiz.confuse_text(item)
+            while confused_word in diff_dic:
+                confused_word = ConfuseBiz.confuse_text(item)
+            diff_dic.append(confused_word)
+            confused_dict[item] = confused_word
     ConfuseBiz.create_confuse_file(os.path.join(output_dir, 'Confuse.h'), confused_dict)
     log_info("You can browse run logs in file {0}".format(os.path.join(output_dir, 'confuse_log.log')), 1, True)
     log_file.close()
