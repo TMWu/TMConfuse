@@ -1,5 +1,9 @@
 # TMConfuse
 
+## 6月6日更新：
+由于上架过程中混淆词汇中存在敏感词汇，被苹果爸爸拒了一次，所以修改随机单词拼接规则，由通用的单词拼接，可以自行修改
+---
+
 首先声明，此文章是综合了几位大神的精髓，再结合自身需求作的修改完善！
 
 [原文：kaich/codeobscure](https://github.com/LennonChin/Code-Confuse-Plugin)
