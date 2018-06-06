@@ -2,6 +2,17 @@
 
 ## 6月6日更新：
 由于上架过程中混淆词汇中存在敏感词汇，被苹果爸爸拒了一次，所以修改随机单词拼接规则，由通用的单词拼接，可以自行修改
+
+```
+def confuse_text(text):
+firstArray = ['send', 'check', 'upload', 'refresh', 'has','rest', 'change', 'add', 'remove', 'is']
+secondArray = ['Item', 'UserInfo', 'MediaInfo', 'Route', 'Common', 'Chat', 'Commis']
+thirdArray = ['By', 'Of', 'With', 'And', 'From', 'To', 'In']
+forthArray = ['Home', 'DrawMap', 'MediaID', 'Message', 'Loaction', 'Username', 'My']
+fifthArray = ['Info', 'Count', 'Name', 'SystemId', 'Title', 'Topic', 'Action']
+word = random.choice(firstArray) + random.choice(secondArray) + random.choice(thirdArray) + random.choice(forthArray) + random.choice(fifthArray)
+return word
+```
 ***
 
 首先声明，此文章是综合了几位大神的精髓，再结合自身需求作的修改完善！
